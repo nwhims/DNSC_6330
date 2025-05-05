@@ -37,12 +37,12 @@
   * Training rows: 112,237
   * Validation rows: 48,101
 
-### Test Data
+### Evaluation Data
 * **Source of test data**: Home Mortgage Disclosure Act (HMDA)
 * **Number of rows in test data**: 19,831
 * **State any differences in columns between training and test data**: None
 
-### Model details
+### Model Details
 * **Columns used as inputs in the final model**: 'property_value_std', 'intro_rate_period_std', 'no_intro_rate_period_std', 'debt_to_income_ratio_missing', 'debt_to_income_ratio_std', 'income_std'
 * **Column(s) used as target(s) in the final model**: 'high_priced'
 * **Type of model**: EBM
@@ -81,11 +81,21 @@ Table 1. AUC values across data partitions.
 
 Table 2. Validation AIR values for race and sex groups. 
 
-#### Correlation Heatmap
-
-![Correlation Heatmap](download.png)
+![Correlation Heatmap](heatmap.png)
 
 Figure 1. Correlation heatmap for input features. 
+
+![Shapley Values](shapley_by_model.png)
+
+Figure 2. Local feature importance across models.
+
+![Stolen Model](simulated_model.png)
+
+Figure 3. Extracted representation of the derived model.
+
+![Logloss Residuals](logloss_resid.png)
+
+Figure 4. A plot of the predictive residuals on a log scale.
 
 ### Ethical Considerations
 
