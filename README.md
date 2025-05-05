@@ -99,3 +99,9 @@ Figure 4. A plot of the predictive residuals on a log scale.
 
 ### Ethical Considerations
 
+* **Negative Impacts**:
+  * overreliance on an imperfect model
+  * belief that it is the only solution
+* **Uncertainties**:
+  * how outliers will behave
+  * vulnerabilities that haven't been tested
