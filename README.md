@@ -5,11 +5,11 @@
 * **Developer**: Nick Whims, `whimsnick@gmail.com`
 * **Model date**: April, 2025
 * **Model version**: 1.0
-* **Model implementation code**: [DNSC_6301_Example_Project.ipynb](https://github.com/jphall663/GWU_DNSC_6301_project/blob/main/DNSC_6301_Example_Project.ipynb)
+* **Model implementation code**: [DNSC_6330_loan_model.ipynb](https://github.com/nwhims/DNSC_6330/blob/main/DNSC_6330_loan_model.ipynb)
 
 ### Intended Use
-* **Primary intended uses**: This model is an *example* probability of default classifier, with an *example* use case for determining eligibility for a credit line increase.
-* **Primary intended users**: Students in GWU DNSC 6301 bootcamp.
+* **Primary intended uses**: This model is a probability of default classifier, with an intended use case for determining eligibility for a hoem loan.
+* **Primary intended users**: Home loan providers.
 * **Out-of-scope use cases**: Any use beyond an educational example is out-of-scope.
 
 ### Training Data
@@ -18,20 +18,20 @@
 
 | Name | Modeling Role | Measurement Level| Description|
 | ---- | ------------- | ---------------- | ---------- |
-|**ID**| ID | int | unique row indentifier |
-| **LIMIT_BAL** | input | float | amount of previously awarded credit |
-| **SEX** | demographic information | int | 1 = male; 2 = female
-| **RACE** | demographic information | int | 1 = hispanic; 2 = black; 3 = white; 4 = asian |
-| **EDUCATION** | demographic information | int | 1 = graduate school; 2 = university; 3 = high school; 4 = others |
-| **MARRIAGE** | demographic information | int | 1 = married; 2 = single; 3 = others |
-| **AGE** | demographic information | int | age in years |
-| **PAY_0, PAY_2 - PAY_6** | inputs | int | history of past payment; PAY_0 = the repayment status in September, 2005; PAY_2 = the repayment status in August, 2005; ...; PAY_6 = the repayment status in April, 2005. The measurement scale for the repayment status is: -1 = pay duly; 1 = payment delay for one month; 2 = payment delay for two months; ...; 8 = payment delay for eight months; 9 = payment delay for nine months and above |
-| **BILL_AMT1 - BILL_AMT6** | inputs | float | amount of bill statement; BILL_AMNT1 = amount of bill statement in September, 2005; BILL_AMT2 = amount of bill statement in August, 2005; ...; BILL_AMT6 = amount of bill statement in April, 2005 |
-| **PAY_AMT1 - PAY_AMT6** | inputs | float | amount of previous payment; PAY_AMT1 = amount paid in September, 2005; PAY_AMT2 = amount paid in August, 2005; ...; PAY_AMT6 = amount paid in April, 2005 |
-| **DELINQ_NEXT**| target | int | whether a customer's next payment is delinquent (late), 1 = late; 0 = on-time |
+|**term_360**| input | int | whether the mortgage is a standard 360 month mortgage (1) or a different type of mortgage (0) |
+| **property_value_std** | input | float | value of the mortgaged property |
+| **no_intro_rate_period_std** | input | int | whether (1) or not (0) a mortgage does not include an introductory rate period
+| **loan_to_value_ratio_std** | input | float | atio of the mortgage size to the value of the property for mortgage applicants |
+| **intro_rate_period_std** | input | float | standardized introductory rate period for mortgage applicants |
+| **loan_amount_std** | input | float | standardized amount of the mortgage for applicants |
+| **income_std** | input | float | standardized income for mortgage applicants. |
+| **debt_to_income_ratio_missing** | input | int | missing marker (1) for debt_to_income_ratio_std |
+| **debt_to_income_ratio_std** | input | float | standardized debt-to-income ratio for mortgage applicants |
+| **conforming** | input | int | whether the mortgage conforms to normal standards (1), or whether the loan is different (0), e.g., jumbo, HELOC, reverse mortgage, etc. |
+| **high_priced**| target | int | the annual percentage rate (APR) charged for a mortgage is 150 basis points (1.5%) or more above a survey-based estimate of similar mortgages; (1) = yes, (2) = no |
 
-* **Source of training data**: GWU Blackboard, email `jphall@gwu.edu` for more information
-* **How training data was divided into training and validation data**: 50% training, 25% validation, 25% test
+* **Source of training data**: Home Mortgage Disclosure Act (HMDA)
+* **How training data was divided into training and validation data**: 62% training, 11% validation, 27% test
 * **Number of rows in training and validation data**:
-  * Training rows: 15,000
-  * Validation rows: 7,500
+  * Training rows: 160,338
+  * Validation rows: 19,831
